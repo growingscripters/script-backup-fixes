@@ -1,2 +1,2 @@
 # script-backup-fixes
-修改中文件
+此目錄放置修改中的腳本文件
