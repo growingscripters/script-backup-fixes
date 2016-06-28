@@ -11,10 +11,11 @@ Ongocommand:
 	if (!.@atcmd_numparameters || ( .@atcmd_numparameters && .@atcmd_parameters$[0] != "0" && !.@i)) {
 		dispbottom "-------可傳送的地圖--------";
 		freeloop(1);
+		freeloop(1);
 		for (.@j=0; .@j<.size;.@j+=3 ) {
-			for(.@k=0;.@k<=2 ;.@k++) {
+			for(.@k=0;.@k<=2 && (.@j+.@k) < .size ;.@k++) {
 				explode(.@wdj$, mapname$[.@j+.@k], ":");
-				set .@showstr$,.@showstr$+.@j+": "+.@wdj$[1];
+				set .@showstr$,.@showstr$+.@j+": "+.@wdj$[1]+"  ";
 			}
 			dispbottom .@showstr$;
 			deletearray .@wdj$;
@@ -22,6 +23,7 @@ Ongocommand:
 
 		}
 		freeloop(0);
+
 
 	} else {
 		explode(.@wd$, mapname$[.@i], ":");
