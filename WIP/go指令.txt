@@ -14,7 +14,7 @@ Ongocommand:
 //	if (!.@atcmd_numparameters ||  .@i >= .size   || ( .@atcmd_numparameters && .@atcmd_parameters$[0] != "0" && !.@i))
 //上版條件式內容保留參考 
 // go後面參數 小於 0  或是 大於 目前地圖數量  與 非數字參數時顯示
-    if ( .@i >= .size   ||  .@i  <= 0 ) 
+    if ( .@i >= .size   ||  .@i  < 0 ) 
 	{
 		dispbottom "-------可傳送的地圖--------";
 		freeloop(1);
