@@ -14,7 +14,7 @@ Ongocommand:
 		for (.@j=0; .@j<.size;.@j+=3 ) {
 			for(.@k=0;.@k<=2 && (.@j+.@k) < .size ;.@k++) {
 				explode(.@wdj$, .mapname$[.@j+.@k], ":");
-				set .@showstr$, .@showstr$+.@j+": "+.@wdj$[1]+"  ";
+				set .@showstr$, .@showstr$+(.@j+.@k)+": "+.@wdj$[1]+"  ";
 			}
 			dispbottom .@showstr$;
 			deletearray .@wdj$;
