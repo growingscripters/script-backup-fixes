@@ -6,15 +6,15 @@ OnInit:
 	bindatcmd "go",strnpcinfo(3)+"::Ongocommand";
 	end;
 Ongocommand:
-	
+
 	.@i= atoi(.@atcmd_parameters$[0]);
 	if (!.@atcmd_numparameters || ( .@atcmd_numparameters && .@atcmd_parameters$[0] != "0" && !.@i)) {
 		dispbottom "-------可傳送的地圖--------";
 		freeloop(1);
 		for (.@j=0; .@j<.size;.@j+=3 ) {
 			for(.@k=0;.@k<=2 && (.@j+.@k) < .size ;.@k++) {
-				explode(.@wdj$, mapname$[.@j+.@k], ":");
-				set .@showstr$,.@showstr$+.@j+": "+.@wdj$[1]+"  ";
+				explode(.@wdj$, .mapname$[.@j+.@k], ":");
+				set .@showstr$, .@showstr$+.@j+": "+.@wdj$[1]+"  ";
 			}
 			dispbottom .@showstr$;
 			deletearray .@wdj$;
@@ -23,12 +23,18 @@ Ongocommand:
 		}
 		freeloop(0);
 
-
 	} else {
-		explode(.@wd$, mapname$[.@i], ":");
+		explode(.@wd$, .mapname$[.@i], ":");
 		warp .@wd$[0],atoi(.@wd$[2]),atoi(.@wd$[3]);
 		deletearray .@wd$;
-
 	}
 	end;
 }
+
+//setarray .mapname$[5],"IZLUDE:128:114","ALDEBARAN:140:131","LUTIE:147:134","COMODO:209:143","YUNO:157:51";
+//setarray .mapname$[10],"AMATSU:198:84","GONRYUN:160:120","UMBALA:89:157","NIFLHEIM:21:153","LOUYANG:217:40";
+//setarray .mapname$[15],"NOVICE:53:111","JAIL:23:61","JAWAII:249:127","AYOTHAYA:151:117","EINBROCH:64:200";
+//setarray .mapname$[20],"LIGHTHALZEN:158:92","EINBECH:70:95","HUGEL:96:145","RACHEL:130:110","VEINS:216:123";
+//setarray .mapname$[25],"MOSCOVIA:223:184","MIDCAMP:180:240","MANUK:282:138","SPLENDIDE:201:147","BRASILIS:182:239";
+//setarray .mapname$[30],"DICASTES:198:187","MORA:44:151","DEWATA:200:180","MALANGDO:140:114","MALAYA:242:211";
+//setarray .mapname$[31],"ECLAGE:110:39";
