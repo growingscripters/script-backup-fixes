@@ -1,0 +1,33 @@
+-	script	atcmd_go	-1,{
+end;
+OnInit:
+	setarray .mapname$[0],"PRONTERA:´¶¶©¼w©Ô:156:191","MORROC:¹ÚÃ¹§J:156:93","GEFFEN:¦Nªâ:119:59","PAYON:´´¶§:162:233","ALBERTA:¦ãº¸¨©¶ð:192:147";
+	.size = getarraysize(.mapname$);
+	bindatcmd "go",strnpcinfo(3)+"::Ongocommand";
+	end;
+Ongocommand:
+	
+	.@i= atoi(.@atcmd_parameters$[0]);
+	if (!.@atcmd_numparameters || ( .@atcmd_numparameters && .@atcmd_parameters$[0] != "0" && !.@i)) {
+		dispbottom "-------¥i¶Ç°eªº¦a¹Ï--------";
+		freeloop(1);
+		for (.@j=0; .@j<.size;.@j+=3 ) {
+			for(.@k=0;.@k<=2 ;.@k++) {
+				explode(.@wdj$, mapname$[.@j+.@k], ":");
+				set .@showstr$,.@showstr$+.@j+": "+.@wdj$[1];
+			}
+			dispbottom .@showstr$;
+			deletearray .@wdj$;
+			.@showstr$ ="";
+
+		}
+		freeloop(0);
+
+	} else {
+		explode(.@wd$, mapname$[.@i], ":");
+		warp .@wd$[0],atoi(.@wd$[2]),atoi(.@wd$[3]);
+		deletearray .@wd$;
+
+	}
+	end;
+}
