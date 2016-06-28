@@ -14,14 +14,12 @@ Ongocommand:
 //	if (!.@atcmd_numparameters ||  .@i >= .size   || ( .@atcmd_numparameters && .@atcmd_parameters$[0] != "0" && !.@i))
 //上版條件式內容保留參考 
 // go後面參數 小於 0  或是 大於 目前地圖數量  與 非數字參數時顯示
-    if ( .@i >= .size   ||  .@i  < 0 ) 
-	{
+    if ( .@i >= .size   ||  .@i  < 0 ) {
+
 		dispbottom "-------可傳送的地圖--------";
 		freeloop(1);
-		for (.@j=0; .@j<.size;.@j+=3 ) 
-		{
-			for(.@k=0;.@k<=2 && (.@j+.@k) < .size ;.@k++) 
-			{
+		for (.@j=0; .@j<.size;.@j+=3 ) {
+			for(.@k=0;.@k<=2 && (.@j+.@k) < .size ;.@k++) {
 				explode(.@wdj$, .mapname$[.@j+.@k], ":");
 				set .@showstr$, .@showstr$+(.@j+.@k)+": "+.@wdj$[1]+"  ";
 			}
@@ -32,9 +30,7 @@ Ongocommand:
 		}
 		freeloop(0);
 
-	} 
-	else 
-	{
+	} else {
 		explode(.@wd$, .mapname$[.@i], ":");
 		warp .@wd$[0],atoi(.@wd$[2]),atoi(.@wd$[3]);
 		deletearray .@wd$;
