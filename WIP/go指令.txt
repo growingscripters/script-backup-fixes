@@ -1,18 +1,27 @@
 -	script	atcmd_go	-1,{
 end;
 OnInit:
-	setarray .mapname$[0],"PRONTERA:�����w��:156:191","MORROC:��ù�J:156:93","GEFFEN:�N��:119:59","PAYON:����:162:233","ALBERTA:�㺸����:192:147";
+	setarray .mapname$[0],"prontera:普隆德拉:156:191","morocc:夢羅克:156:93","geffen:吉芬:119:59","payon:斐陽:162:233","alberta:艾爾貝塔:192:147";
 	.size = getarraysize(.mapname$);
 	bindatcmd "go",strnpcinfo(3)+"::Ongocommand";
 	end;
 Ongocommand:
 
-	.@i= atoi(.@atcmd_parameters$[0]);
-	if (!.@atcmd_numparameters || ( .@atcmd_numparameters && .@atcmd_parameters$[0] != "0" && !.@i)) {
-		dispbottom "-------�i�ǰe���a��--------";
+	.@i = atoi(.@atcmd_parameters$[0]);
+
+
+
+//	if (!.@atcmd_numparameters ||  .@i >= .size   || ( .@atcmd_numparameters && .@atcmd_parameters$[0] != "0" && !.@i))
+//上版條件式內容保留參考 
+// go後面參數 小於 0  或是 大於 目前地圖數量  與 非數字參數時顯示
+    if ( .@i >= .size   ||  .@i  <= 0 ) 
+	{
+		dispbottom "-------可傳送的地圖--------";
 		freeloop(1);
-		for (.@j=0; .@j<.size;.@j+=3 ) {
-			for(.@k=0;.@k<=2 && (.@j+.@k) < .size ;.@k++) {
+		for (.@j=0; .@j<.size;.@j+=3 ) 
+		{
+			for(.@k=0;.@k<=2 && (.@j+.@k) < .size ;.@k++) 
+			{
 				explode(.@wdj$, .mapname$[.@j+.@k], ":");
 				set .@showstr$, .@showstr$+(.@j+.@k)+": "+.@wdj$[1]+"  ";
 			}
@@ -23,7 +32,9 @@ Ongocommand:
 		}
 		freeloop(0);
 
-	} else {
+	} 
+	else 
+	{
 		explode(.@wd$, .mapname$[.@i], ":");
 		warp .@wd$[0],atoi(.@wd$[2]),atoi(.@wd$[3]);
 		deletearray .@wd$;
