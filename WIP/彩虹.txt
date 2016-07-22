@@ -1,0 +1,13 @@
+-	script	±m­i	-1,{
+end;
+OnTimer500:
+	misceffect 410;
+	initnpctimer;
+end;
+OnInit:
+	initnpctimer;
+end;
+}
+
+
+prontera,100,100,2 duplicate(±m­i) ±m­i#01 111
