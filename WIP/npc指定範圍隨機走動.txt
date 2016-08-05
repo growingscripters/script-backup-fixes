@@ -1,0 +1,21 @@
+prt_fild08,171,360,5	script	º쾧울ㅲ02	911,{
+mes "[º쾧울ㅲ]";
+mes "쬋쫚!!";
+close;
+OnInit:
+	set(.mxc, 510);
+	set(.rx1, 167);
+        set(.rx2, 175);
+	set(.ry1, 357);
+	set(.ry2, 363);
+	while(1) {
+		sleep2(rand(3,4)*2000);
+		getmapxy(.@m$,.@x,.@y,1);
+		set(.@i,0);
+		while ( (checkcell( .@m$, .@nx = .@x + rand(-13, 13), .@ny = .@y + rand( -13, 13 ), cell_chknopass ) || !(.@nx >= .rx1 && .@nx <= .rx2 && .@ny >= .ry1 && .@ny <= .ry2) ) && (set(.@i,.@i+1) < .mxc )  );	
+		if(.@i >= 510) continue;
+		npcspeed rand(400,500);
+		npcwalkto .@nx, .@ny;
+	}
+end;
+}
