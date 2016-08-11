@@ -9,6 +9,7 @@ function	script	F_npcrandwallk	{
 	set(.na,.rx1 +.rx2 + .ry1 +.rx2);
 	set(.mr,30);//npcwalk能走的最大距離
 	set(.mxlc,2046);//2048會無窮迴圈
+	npcspeed .ns;
 	while(1) {
 		sleep2(.delay);
 		getmapxy(.@m$,.@x,.@y,1);
@@ -18,7 +19,6 @@ function	script	F_npcrandwallk	{
 		else
 			while ( checkcell( .@m$, .@nx = .@x + rand(-1*.mr, .mr), .@ny = .@y + rand( -1*.mr, .mr ), cell_chknopass ) && (set(.@i,.@i+1) < .mxlc ));
 		if(.@i >= .mxlc) continue;
-		npcspeed .ns;
 		npcwalkto .@nx, .@ny;
 	}
 
