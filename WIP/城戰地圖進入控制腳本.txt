@@ -32,7 +32,7 @@ OnInit:
 		setmapflag .@maps$[.@i],mf_loadevent;
 	}
 	//¶}©ñªº«°¦À
-	setarrat .ac$[0],"prtg_cas03","arug_cas02";
+	setarray .ac$[0],"prtg_cas03","arug_cas02";
 	.acsize = getarraysize(.ac$);
 	
 end;
