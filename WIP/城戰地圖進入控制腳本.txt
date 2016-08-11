@@ -24,7 +24,7 @@ OnInit:
 	//初心者城戰地圖
 	setarray .@maps$[30],"n_castle","nguild_alde","nguild_gef","nguild_pay","nguild_prt";
 
-	//工會挑戰賽地圖已被拿去當道管用
+	//地下公會密穴
 	//setarray .@maps$[35],"gld_dun01","gld_dun02","gld_dun03","gld_dun04";
 
 	set(.@size, getarraysize(.@maps$));
