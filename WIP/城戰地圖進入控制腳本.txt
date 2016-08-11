@@ -4,10 +4,9 @@ OnPCLoadMapEvent:
 	.@m$ = strcharinfo(3);
 	if( getmapflag(.@m$, mf_gvg_castle) ) {
 		if(getgmlevel() <= 60) {
-			if(!compare(.@m$,"prtg_cas") && !compare(.@m$,"arug_cas")) {//只開放兩個城戰地圖可以進
+			for(.@i=0 ;.@i < .acsize && .ac$[.@i]!= .@m$;.@i++);
+			if(.@i >= .acsize)
 				warp "SavePoint",0,0;
-			}	
-
 		}
 	}
 end;
@@ -32,6 +31,9 @@ OnInit:
 	for (.@i = 0; .@i <= .@size; ++.@i) {
 		setmapflag .@maps$[.@i],mf_loadevent;
 	}
+	//開放的城池
+	setarrat .ac$[0],"prtg_cas03","arug_cas02";
+	.acsize = getarraysize(.ac$);
 	
 end;
 }
